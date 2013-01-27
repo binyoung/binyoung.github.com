@@ -29,7 +29,7 @@ author :
 # Else if you are pushing to username.github.com, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
-production_url : http://yangbin.tk/
+production_url : http://yangbin.tk
 deploy: ""
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
@@ -103,7 +103,7 @@ JB :
   analytics :
     provider : google
     google : 
-        tracking_id : 'UA-30555629-1'
+        tracking_id : 'UA-38002829-1'
     getclicky :
       site_id : 
     mixpanel :
