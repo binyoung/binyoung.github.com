@@ -2,7 +2,7 @@
 layout: post
 title: 阅读器还是过滤器？
 category: IT
-tags: 技术新闻
+tags: News
 ---
 [Google Reader](http://zh.wikipedia.org/wiki/Google%E9%98%85%E8%AF%BB%E5%99%A8)由Google在2005年10月7日向用户开放, 是一款管理和阅读[RSS](http://zh.wikipedia.org/wiki/RSS)的流行工具. 
 
