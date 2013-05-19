@@ -1,0 +1,414 @@
+---
+layout: default
+title: "蒙特卡罗法计算Pi"
+category: Coding
+tags: [Lisp, Python]
+---
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+lang="en" xml:lang="en">
+<head>
+<title>蒙特卡罗法计算Pi</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2012-10-07 17:31:12 CST"/>
+<meta name="author" content="杨彬"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+
+<h1 class="title">蒙特卡罗法计算Pi</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 缘起</a></li>
+<li><a href="#sec-2">2 Lisp实现：</a></li>
+<li><a href="#sec-3">3 Python实现：</a></li>
+<li><a href="#sec-4">4 C 实现</a></li>
+<li><a href="#sec-5">5 效率</a></li>
+<li><a href="#sec-6">6 注记</a>
+<ul>
+<li><a href="#sec-6_1">6.1 随机数生成</a></li>
+<li><a href="#sec-6_2">6.2 计算的精度</a></li>
+<li><a href="#sec-6_3">6.3 蒙特卡罗法(Monte Carlo)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> 缘起</h3>
+<div class="outline-text-3" id="text-1">
+
+<p>记得高中时，听人说，在一个方形靶上画个圆，然后随机向靶上投飞针，最后数数多少针落在圆内，就能估算出圆周率。当时感觉这算法真的非常巧妙。最近我偶然回想起这事，想试试蒙特卡罗在计算\(\pi\)上效率如何。
+</p>
+<p>
+很简单，考虑一个边长为1正方形，其内有个圆内切。要是我们随机向这个正方形中投针，那么在圆内的针的数目和正方形里针的总数的比为\(\pi/4\)。
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Lisp实现：</h3>
+<div class="outline-text-3" id="text-2">
+
+
+
+
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">defun</span> <span style="color: #a020f0;">pira</span> ()
+      (<span style="color: #ff0000;">let*</span> ((x (random 1.0))
+             (y (random 1.0))
+             (z (+ (expt (- x 0.5) 2) (expt (- y 0.5) 2))))
+        (&lt;= z 0.25)))
+(<span style="color: #ff0000;">defun</span> <span style="color: #a020f0;">js</span> (num)
+  (<span style="color: #ff0000;">let</span> ((x 0))
+    (<span style="color: #ff0000;">dotimes</span> (i num)
+      (<span style="color: #ff0000;">if</span> (pira)
+          (incf x)))
+     x))
+(time (/ (<span style="color: #ff0000;">loop</span> for i from 1 to 10 summing (* (/ (js 1000000) 1000000.0) 4)) 10.0))
+</pre>
+
+
+<p>
+<i>结果：</i>
+</p>
+<p class="verse">
+Evaluation took:<br/>
+0.444 seconds of real time<br/>
+0.440000 seconds of total run time (0.440000 user, 0.000000 system)<br/>
+99.10% CPU<br/>
+1,328,853,888 processor cycles<br/>
+5,984 bytes consed<br/>
+<br/>
+3.1417744<br/>
+</p>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Python实现：</h3>
+<div class="outline-text-3" id="text-3">
+
+
+
+
+
+<pre class="src src-Python"># coding: utf-8
+import random
+import time
+def pir(a):
+    s = 0
+    for i in range(1,int(a)):
+        x = random.random()
+        y = random.random()
+        z = (x-0.5)**2 + (y-0.5)**2
+        if z &lt;= 0.25:
+            s += 1
+
+    return s/a
+
+begin = time.time()
+b = sum([pir(1000000.0)*4 for j in range(10)])
+print b/10.0
+print <span style="color: #00ffff;">"&#29992;&#26102;:%s&#31186;"</span>%(time.time()-begin)
+</pre>
+
+
+<p>
+<i>结果：</i>
+</p>
+<p class="verse">
+3.1413604<br/>
+用时:5.98418188095秒<br/>
+</p>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> C 实现</h3>
+<div class="outline-text-3" id="text-4">
+
+
+
+
+<pre class="src src-C">#include <span style="color: #00ffff;">"stdio.h"</span>
+#include <span style="color: #00ffff;">"math.h"</span>
+#include <span style="color: #00ffff;">"time.h"</span>
+#define RAND_MAX 0x7fffffff
+#define NUM 1000000.0
+float randpi(float number)
+{
+  int i,s=0;
+  float x,y,z;
+  for(i = 1;i &lt;= number;i++)
+  {
+    x = (double)(1.0*rand()/(RAND_MAX+1.0));
+    y = (double)(1.0*rand()/(RAND_MAX+1.0));
+    z = pow(x-0.5,2.0)+pow(y-0.5,2.0);
+    if(z &lt;= 0.25)s++;
+  }
+  return ((s/number)*4.0);
+}
+main ()
+{
+  float c_start,c_end,sn;
+  int j;
+  c_start = clock();
+  for(j = 1;j &lt;= 10;j++)
+  {
+    sn += randpi(NUM);
+  }
+  printf(<span style="color: #00ffff;">"Pi is %f\n"</span>,(sn/10.0));
+  c_end = clock();
+  printf(<span style="color: #00ffff;">"Usage time = %fs."</span>,difftime(c_end,c_start)/CLOCKS_PER_SEC);
+  return 0;
+}
+</pre>
+
+
+<p>
+<i>结果</i>
+</p>
+<p class="verse">
+Pi is 3.142256<br/>
+Usage time = 0.250000s.<br/>
+</p>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> 效率</h3>
+<div class="outline-text-3" id="text-5">
+
+<p>取1,000,000个随机数进行计算，相当于进行一百万次投标。得到\(\pi\)的值，共做十次这样的计算，取平均值。
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption></caption>
+<colgroup><col class="left" /><col class="right" /><col class="right" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">Language</th><th scope="col" class="right">Results</th><th scope="col" class="right">Usage time/s</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">c</td><td class="right">3.142256</td><td class="right">0.250000</td></tr>
+</tbody>
+<tbody>
+<tr><td class="left">Lisp</td><td class="right">3.1417744</td><td class="right">0.444000</td></tr>
+</tbody>
+<tbody>
+<tr><td class="left">Python</td><td class="right">3.1413604</td><td class="right">5.984182</td></tr>
+</tbody>
+</table>
+
+
+
+<p>
+这次 <i>Lisp</i> 的速度非常快，比python快了十几倍！以快著称的 <b>c</b> 语言，比它也快不了一倍。看来Lisp做计算效率的确非常之快，名不虚传！要注意，这也许可能和这几种语言生成随机数的算法相关。
+</p></div>
+
+</div>
+
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> 注记</h3>
+<div class="outline-text-3" id="text-6">
+
+
+</div>
+
+<div id="outline-container-6_1" class="outline-4">
+<h4 id="sec-6_1"><span class="section-number-4">6.1</span> 随机数生成</h4>
+<div class="outline-text-4" id="text-6_1">
+
+<p>注意 c 的随机数生成函数 <code>rand()</code> 的用法。这个函数生成 <code>0~RAND_MAX</code> 之间的 <b>伪</b> 随机数。这就是说，这个函数并不返回一个真正的随机数，而是使用一个确定的算法计算出一个“随机数”，这个过程完全可以预测，并非随机。其中 <code>RAND_MAX</code> 是函数 <code>rand()</code> 生成随机数的最大值。这个数根据不同的系统而不同，就我的Linux系统，它是 \(2^{31}-1\)也就是 <code>0x7fffffff</code> ，对windows系统，据说是 <code>0xfff</code> 。当我运行程序时，编译器提醒我， <code>RAND_MAX</code> 没定义，于是我用 <code>0xfff</code> 测试了下，发现结果不对，然后我猜应该是  <code>0xfffffff</code> ，结果OK。
+</p>
+<p>
+实际上在源码编译时，编译器抽取函数 <code>srand()</code>  给函数 <code>rand()</code> 一个种子，然后编译生成一个固定算式产生“随机数”，这样在得到目标代码后，你每次运行得到的“随机数”是固定的，一点都不随机。
+</p>
+<p>
+让计算机生成随机数是个非常重要和很有技巧的事情。下面摘抄一段 <i>Harley Hahn</i> 在其 <i>Harley Hahn's Guide to Unix and Linux</i> 书中 \(Page_{576}\) 的技术提示：
+</p><blockquote>
+
+<p>Unix和Linux提供两种不同的特殊文件生成随机数：/dev/random 和 /dev/urandom 。它们之间的区别很微妙。
+</p>
+<p>
+系统中的随机数生成器收集“environmental noise” ，并将其存储在一个“熵池”(entropy pool)中。然后，使用熵池中的数据位生成随机数。如果熵池中的数据被耗尽，那么 /dev/random 文件将停止，等待收集更多的noise。这样就可以保证关键操作(如创建加密文件)的完全随机性。但是，有时候，为了等待熵池被填充，可能会出现延迟的情况。
+</p>
+<p>
+另一方面，/dev/urandom 则永远不会停止生成随机数，即使熵池短缺(<b>u</b> means unlimited)。为此该文件会重用一些旧的数据位。理论上，使用短缺熵池随机数加密的数据更易受到攻击。在实际中，区别不是太大，因为没人真的知道如何利用这样的一个微小理论缺陷。
+</p>
+</blockquote>
+
+
+<p>
+我猜Sheldon会喜欢 /dev/random 的。事实上 Harley 过于乐观了，2006年有人提供了对<a href="http://zh.wikipedia.org/wiki//dev/random">Linux随机数发生器的详尽密码学分析</a> ，提出了几个弱点。值得一提的是，最先在Linux内核中引入随机数发生器的是<a href="http://www.techcn.com.cn/index.php?edition-view-132887-1">曹予德</a>。
+</p></div>
+
+</div>
+
+<div id="outline-container-6_2" class="outline-4">
+<h4 id="sec-6_2"><span class="section-number-4">6.2</span> 计算的精度</h4>
+<div class="outline-text-4" id="text-6_2">
+
+<p>我们看到尽管 c 语言的计算速度最快，然而它的精度却是最差的，其它的都计算到了小数点后第三位，而 c 却只计算到第二位。事实上用 c 计算\(10^{9}\)次能得到 \(\pi=3.141576\)，耗时26.17秒。值得注意的是，当我使用python进行更高次(如一亿次)计算时，CPU并不运作，但我的计算机的内存和交换虚拟内存被迅速吃掉。这些闲置的内存加起来足足3G。上次我计算自幂数时也遇到这个问题。而用 c 进行计算完全不会发现内存被明显消耗。这是个值得深究的问题，我想在python中应该存在内存保护机制，而在默认情况下这个机制并未打开。
+总之，使用蒙特卡罗法估算的圆周率在精度上还远不能和祖冲之(429-500)得到结果相比。但是这个方法本来就不是干这种工作的，下面再述。
+</p></div>
+
+</div>
+
+<div id="outline-container-6_3" class="outline-4">
+<h4 id="sec-6_3"><span class="section-number-4">6.3</span> 蒙特卡罗法(Monte Carlo)</h4>
+<div class="outline-text-4" id="text-6_3">
+
+<p>Monte Carlo是摩纳哥的著名赌城。这个方法来自<a href="http://en.wikipedia.org/wiki/Stanislaw_Ulam">S.Ulam</a> 的一次灵感。在一次生病时，Ulam自己一个人玩扑克。从概率上分析，各种牌形的所有可能组合数目非常大，每一种特定牌形出现的几率很小。然而在实际发了十几圈牌时候，Ulam发现实际上与一种特定牌形相差不大的组合出现的几率还是非常大的。这使他意识到，通过实际做几次试验发牌，就能得到经典牌形出现的几率。这是个天才的想法。下面摘自 <i>S.Koonin</i> 的 <i>Computational Physics</i> Chapter 8:
+</p>
+<p>
+考虑一个高维积分。如：由N个原子组成的气体，这些原子在温度\(1/\beta\)下通过对偶位势V相互作用，其经典配分函数正比于3N维积分：
+\[Z=\int d^{3}r_{1}\dots d^{3}r_{N}e^{-\beta\sum_{i&lt;j}V(r_{ij})}\]
+为了数值求这个高维积分，我们需要将被积的高维空间离散成一个个小块，假设每一维坐标离散为10份，(这是个非常粗糙的离散化。)那么被积函数必须在\(10^{3N}\)个点上求值。假定考虑20个分子的相互作用，(这同样是个粗糙的近似)，那么要做\(10^{60}\)次计算。假定计算机每秒做\(10^{10}\)次计算，那么将需要\(10^{50}\)秒。而宇宙年龄仅为137亿年\(4.32\times 10^{17}\)秒。
+</p>
+<p>
+这样一个常见的高维积分就使计算机毫无办法。这时Monte Carlo法就有用武之地了。它的处理方法很简单，以偏盖全，我们用随机抽样的方式在上述\(10^{3N}\)个点的一小部分上积分，用这些点上的积分值估计整个积分。这就是Monte Carlo法的中心思想。实际表明，这非常有效。实际上这个方法提出时，Ulam正在为曼哈顿计划服务。当时的计算机是最初级的计算机。Monte Carlo法的提出解决了大问题。
+</p>
+<p>
+Ulam是个传奇人物。他是波兰天才数学家，少年时研究集合拓扑。后期研究包罗万象，在每个领域均能独树一帜，提出新的观点。他认为这和他在早年经过的集合论有关。他有本非常精彩的自传《一个数学家的经历》。其中有极多的个人研究体会，同时他精炼的评价了他对一些名家的看法，读来令人深受启发。
+</p></div>
+</div>
+</div>
+<div id="postamble">
+<p class="author"> Author: 杨彬
+</p>
+<p class="date"> Date: 2012-10-07 17:31:12 CST</p>
+<p class="creator">HTML generated by org-mode 7.4 in emacs 23</p>
+</div>
+</div>
+</body>
+</html>
+---
+
+{% include JB/comments %}
