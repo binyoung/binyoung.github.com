@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>标签</title>
+    <title>关于</title>
     
     <meta name="author" content="YangBin">
 
@@ -48,7 +48,7 @@
   
     
     	
-    	<li><a href="/about.html">关于</a></li>
+    	<li class="active"><a href="/about.html" class="active">关于</a></li>
     	
     
   
@@ -60,7 +60,7 @@
   
     
     	
-    	<li class="active"><a href="/tags.html" class="active">标签</a></li>
+    	<li><a href="/tags.html">标签</a></li>
     	
     
   
@@ -128,327 +128,19 @@
       <div id="main-content" class="content">
         
 <div class="page-header">
-  <h1>标签 <small></small></h1>
+  <h1>关于 <small></small></h1>
 </div>
 
 <div class="row">
   <div class="span12">
     
+<p>之前我一直使用Wordpress搭建自己的博客. Wordpress是个很专业的博客网站创建程序, 有很多好用的插件. 安装也非常简单. 著名的<em>科学松鼠会</em>就是用它写的. 但是我觉着wordpress用着还是不甚顺手. 几个月之前我看到阮一峰的文章<a href="http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html">搭建一个免费的，无限流量的Blog—-github</a>, 当时非常感兴趣, 很想在github上搭建一个博客, 但是那段时间忙着毕业, 忙着找工作, 腾不出时间. 再者我觉得作为个人博客来说wordpress已经足够了, 于是就放下折腾的心, 没有做下去.</p>
 
-<ul id="tabs" class="tag_box nav nav-pills">
-    
-  
+<p>但是我知道git是个非常了不起的工具, 一直想找机会学一学, 但总是无缘. 最近有点时间, 又加上我的wordpress博客的服务器又挂掉了, 没办法, 只能开始折腾, 把博客建在git上. 不过这次折腾收获不小, 第一, 这次折腾后以后估计就不用再折腾了, 因为我发现git+jekyll实在是太好用了, 简洁简单, 只要打开Emacs就能搞定一切! 彻底实现了我写博客不离开Emacs的愿望. 再次, org-mode能随心所欲的整合进来, 让个人wiki变得漂亮而有效率.</p>
 
+<p>对我而言, 一个需要注意的地方就是数学公式. 在wordpress上我通过安装一个Mathjax插件来生成latex公式, 这个方式生成的公式不是一整张图片, 而是非常类似字体形式的数学公式. 同样我在现在这个页面的css文件中也使用Mathjax. 这个方法有个缺点: 我发现这使得我的wordpress博客非常慢, 总是好等很久才能打开首页, 因为Mathjax插件只是在网页的css中插入一行, 告诉浏览器遇到latex公式命令就到一个Mathjax的网页上去解析, 然后那个网站回传信息告诉浏览器如何渲染公式. 当然这时你的浏览器显示公式的速度就和你的网速相关了, 如果网速慢, 那你就等着吧! 同样的问题我也在这里遇到了, 这次我发现速度慢的令人不能接受, 这也怪我那篇文章中公式太多了. 而且公式显示还有问题, 有些本来该换行的公式没换行, 就那么放着, 见头不见尾. 实在难看, 但是同样的公式我在org-mode下直接写出来生成html格式就没有任何问题. 看来对公式多的文章, 两个办法, 要么直接生成pdf(本来博客就不是贴正经学术文章的地方); 要么就直接用org-mode生成html, 然后直接存在_post底下搞定. 看了源文件我发现实际上org-mode和我加在css文件中的Mathjax的服务器不是一个服务器, 随即换成org-mode默认的服务器, 感觉打开网页是快了一点.</p>
 
-  
-     
-    	<li><a href="/tags.html#Gravity-ref">Gravity <span>2</span></a></li>
-     
-    	<li><a href="/tags.html#Particle-ref">Particle <span>3</span></a></li>
-     
-    	<li><a href="/tags.html#History-ref">History <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#Time machine-ref">Time machine <span>2</span></a></li>
-     
-    	<li><a href="/tags.html#Parallel universe-ref">Parallel universe <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#Lisp-ref">Lisp <span>2</span></a></li>
-     
-    	<li><a href="/tags.html#Python-ref">Python <span>2</span></a></li>
-     
-    	<li><a href="/tags.html#awk-ref">awk <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#Superluminal-ref">Superluminal <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#essay-ref">essay <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#News-ref">News <span>1</span></a></li>
-    
-  
-
-
-
-</ul>
-
-<hr />
-
-<div class="tab-content">
-
- 
-  <div id="Gravity-ref">
-  <h2>Gravity</h2>
-  <ul>
-      
-    
-
-
-  
-    
-    	
-    	<li><a href="/physics/2011/06/18/gauge-gravity">规范引力</a></li>
-    	
-    
-  
-    
-    	
-    	<li><a href="/physics/2011/06/12/spin-gravity">自旋引力相互作用</a></li>
-    	
-    
-  
-
-
-
-  </ul>
-  </div>
- 
-  <div id="Particle-ref">
-  <h2>Particle</h2>
-  <ul>
-      
-    
-
-
-  
-    
-    	
-    	<li><a href="/physics/2011/06/23/Search-Higgs-Boson">追寻Higgs粒子</a></li>
-    	
-    
-  
-    
-    	
-    	<li><a href="/physics/2011/06/18/gauge-gravity">规范引力</a></li>
-    	
-    
-  
-    
-    	
-    	<li><a href="/physics/2011/06/12/spin-gravity">自旋引力相互作用</a></li>
-    	
-    
-  
-
-
-
-  </ul>
-  </div>
- 
-  <div id="History-ref">
-  <h2>History</h2>
-  <ul>
-      
-    
-
-
-  
-    
-    	
-    	<li><a href="/math/2011/07/04/grothendieck">孤独和创造力</a></li>
-    	
-    
-  
-
-
-
-  </ul>
-  </div>
- 
-  <div id="Time machine-ref">
-  <h2>Time machine</h2>
-  <ul>
-      
-    
-
-
-  
-    
-    	
-    	<li><a href="/physics/2012/10/12/warp-deriver">超越光速—Alcubierre driver</a></li>
-    	
-    
-  
-    
-    	
-    	<li><a href="/physics/2011/07/24/time-machine">时间机器</a></li>
-    	
-    
-  
-
-
-
-  </ul>
-  </div>
- 
-  <div id="Parallel universe-ref">
-  <h2>Parallel universe</h2>
-  <ul>
-      
-    
-
-
-  
-    
-    	
-    	<li><a href="/physics/2011/07/25/parallel-universes">平行宇宙：不同的世界, 不同的梦想</a></li>
-    	
-    
-  
-
-
-
-  </ul>
-  </div>
- 
-  <div id="Lisp-ref">
-  <h2>Lisp</h2>
-  <ul>
-      
-    
-
-
-  
-    
-    	
-    	<li><a href="/Coding/2012/04/12/Monte-method-Pi">蒙特卡罗法计算Pi</a></li>
-    	
-    
-  
-    
-    	
-    	<li><a href="/Coding/2012/03/25/Self-power-number">几种脚本语言速度比较</a></li>
-    	
-    
-  
-
-
-
-  </ul>
-  </div>
- 
-  <div id="Python-ref">
-  <h2>Python</h2>
-  <ul>
-      
-    
-
-
-  
-    
-    	
-    	<li><a href="/Coding/2012/04/12/Monte-method-Pi">蒙特卡罗法计算Pi</a></li>
-    	
-    
-  
-    
-    	
-    	<li><a href="/Coding/2012/03/25/Self-power-number">几种脚本语言速度比较</a></li>
-    	
-    
-  
-
-
-
-  </ul>
-  </div>
- 
-  <div id="awk-ref">
-  <h2>awk</h2>
-  <ul>
-      
-    
-
-
-  
-    
-    	
-    	<li><a href="/Coding/2012/03/25/Self-power-number">几种脚本语言速度比较</a></li>
-    	
-    
-  
-
-
-
-  </ul>
-  </div>
- 
-  <div id="Superluminal-ref">
-  <h2>Superluminal</h2>
-  <ul>
-      
-    
-
-
-  
-    
-    	
-    	<li><a href="/physics/2012/10/12/warp-deriver">超越光速—Alcubierre driver</a></li>
-    	
-    
-  
-
-
-
-  </ul>
-  </div>
- 
-  <div id="essay-ref">
-  <h2>essay</h2>
-  <ul>
-      
-    
-
-
-  
-    
-    	
-    	<li><a href="/physics/2013/01/15/test">宿命</a></li>
-    	
-    
-  
-
-
-
-  </ul>
-  </div>
- 
-  <div id="News-ref">
-  <h2>News</h2>
-  <ul>
-      
-    
-
-
-  
-    
-    	
-    	<li><a href="/IT/2013/03/15/GoogleReader">阅读器还是过滤器？</a></li>
-    	
-    
-  
-
-
-
-  </ul>
-  </div>
-
-
-</div>
-
-<script type="text/javascript">
-if (!($.browser.msie && ($.browser.version == "6.0"))) {
-	$("#tabs>li>a").attr("data-toggle", "tab");
-	$(".tab-content>div").addClass("tab-pane");
-	$(".tab-content>div.tab-pane>h2").remove();
-	$(".tab-content>div.tab-pane>ul").addClass("nav nav-list");
-	$("#tabs a:first").tab('show');
-	var href = '/'+decodeURIComponent(window.location.href).split('/').slice(-1);
-	$(document).ready(function(){
-		$("#tabs a[href='"+href+"']").click();
-	});
-}
-</script>
-
-
+<p>现在这个博客是使用<a href="http://jekyllbootstrap.com/">Jekyll Bootstrap</a>创建而成. Bootstrap是基于Jekyll的一个博客框架, 帮你做好一些后台的事情.</p>
 
   </div>
 </div>
