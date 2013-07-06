@@ -1,8 +1,30 @@
----
-# Remember to set production_url in your _config.yml file!
-title : Sitemap
----
-{% for page in site.pages %}
-{{site.production_url}}{{ page.url }}{% endfor %}
-{% for post in site.posts %}
-{{site.production_url}}{{ post.url }}{% endfor %}
+
+http://yangbinblog.tk/about.html
+http://yangbinblog.tk/index.html
+http://yangbinblog.tk/contact.html
+http://yangbinblog.tk/404.html
+http://yangbinblog.tk/tags.html
+http://yangbinblog.tk/index.html
+http://yangbinblog.tk/pages.html
+http://yangbinblog.tk/categories.html
+http://yangbinblog.tk/archive.html
+http://yangbinblog.tk/gists.html
+http://yangbinblog.tk/atom.xml
+http://yangbinblog.tk/message.html
+http://yangbinblog.tk/sitemap.txt
+
+http://yangbinblog.tk/IT/2013/06/07/portableapps
+http://yangbinblog.tk/Book/2013/05/30/booklistMay
+http://yangbinblog.tk/Book/2013/05/04/booklist
+http://yangbinblog.tk/essay/2013/04/17/hometown
+http://yangbinblog.tk/IT/2013/03/15/GoogleReader
+http://yangbinblog.tk/physics/2013/01/15/test
+http://yangbinblog.tk/physics/2012/10/12/warp-deriver
+http://yangbinblog.tk/Coding/2012/04/12/Monte-method-Pi
+http://yangbinblog.tk/Coding/2012/03/25/Self-power-number
+http://yangbinblog.tk/physics/2011/07/25/parallel-universes
+http://yangbinblog.tk/physics/2011/07/24/time-machine
+http://yangbinblog.tk/math/2011/07/04/grothendieck
+http://yangbinblog.tk/physics/2011/06/23/Search-Higgs-Boson
+http://yangbinblog.tk/physics/2011/06/18/gauge-gravity
+http://yangbinblog.tk/physics/2011/06/12/spin-gravity
