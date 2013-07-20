@@ -12,7 +12,9 @@ http://yangbinblog.tk/gists.html
 http://yangbinblog.tk/atom.xml
 http://yangbinblog.tk/message.html
 http://yangbinblog.tk/sitemap.txt
+http://yangbinblog.tk/page2/index.html
 
+http://yangbinblog.tk/Book/2013/07/03/booklist
 http://yangbinblog.tk/IT/2013/06/07/portableapps
 http://yangbinblog.tk/Book/2013/05/30/booklistMay
 http://yangbinblog.tk/Book/2013/05/04/booklist
