@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>少年无故乡</title>
+    <title>做广义相对论基本计算的Mathematica包</title>
     
     <meta name="author" content="YangBin">
 
@@ -28,6 +28,45 @@
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
   -->
+    
+      <script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+	  /*showProcessingMessages: false,*/
+	  jax: ["input/TeX", "output/HTML-CSS"],
+	  TeX: {
+		TagSide: "left",
+		Macros: {
+		  /*RR: '{\\bf R}',
+		  bold: ['{\\bf #1}',1]*/
+		  sdash: '{|\\!\\!\\!\\sim}'
+		}
+	  },
+	  tex2jax: {
+		  inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+		  processEscapes: true
+	  }
+	});
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript"
+		src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
     
   </head>
 
@@ -130,56 +169,79 @@
       <div id="main-content" class="content">
         
 <div class="page-header">
-    <h1>少年无故乡 <small><!--Supporting tagline--></small></h1>
+    <h1>做广义相对论基本计算的Mathematica包 <small><!--Supporting tagline--></small></h1>
 </div>
 
 <div class="row">
   <div id="article_indent" class="span9 pull-left">
     <div class="span3 article_published">杨彬 发表于
-      <span class="date">17 April 2013</span>
+      <span class="date">07 July 2013</span>
       <div class="article_gplus"><div class="g-plusone" data-size="small" data-annotation="none"></div></div>
     </div>
     <div class="clear"></div>
     
-      <blockquote>
-  <p><em>其实没有故乡, 那不过是个幻想的地方. 所谓故乡就是那个一旦离开, 就再也回不去的地方.</em></p>
-</blockquote>
+      <h2 id="section">缘由</h2>
 
-<h3 id="section">一 远行</h3>
+<p>使用符号计算软件Mathmatica做广义相对论计算的包有很多, 最知名的如<a href="http://grtensor.phy.queensu.ca/">GRTensor</a>. 但是我觉得这些包都太庞大, 功能过多, 使用不便, 因为就我个人而言, 这些包中很多功能实际上用不到.</p>
 
-<p>少年总是期待远行. 彼时, 总是好奇远处的山后是什么. 离开家乡的时刻, 青春随之开始. 旅行是成长的开始, 直到有一天, 你意识到山的背后其实还是山, 沙漠的背后还是沙漠. 也许那时, 青春已经结束.</p>
+<p>为此, 我自己写了一个只有七个函数的简单包<a href="https://files.dropbox.com/u/36755974/GR.m" title="点此下载">GR</a>, 可以计算Einstein张量, 克里斯多菲尔记号, 外尔张量等. 您可以随便改动或传播这个包, 不用注明出处.</p>
 
-<p>年少之时, 每晚躺在床上, 看着满天繁星, 总是神游星际, 难以入眠. 我在想, 夜空中每颗孤寂的星, 都是一个太阳, 都是一个新的世界. 我总是幻想星际旅行. 哥伦布发现了新大陆, 那是在海上, 在地球上. 下一个伟大时代的到来, 将从向着茫茫夜空远航的哥伦布开始. 远方的星系上的生活令人神往, 那里的生命不一定是碳基生物. 非碳基生物的社会结构是怎样的? 如果那种生物不需要为面包工作, 每个”人”一生下来就有一个自持的能源, 如同电池, 生命直到那种能源耗尽而结束, 那么它们创造的文明会是多么奇异. 每思至此, 总是非常兴奋, 难以入睡. 那时我不能忍受拉着窗帘, 窗帘遮住了星空, 让我感到极端压抑.</p>
+<p>需要提到的是, 这个包并非完全由我原创. 不过是把<a href="http://web.physics.ucsb.edu/~hartle/">Gravity: An Introduction to Einstein’s General Relativity</a>附加的代码封装成了包. 在这个过程中我做了些小改动. James Hartle的这本书是学习广义相对论的名著, 如果您觉着这个包好用, 感谢Hartle老先生好了, 譬如买他一本书聊表谢意.</p>
 
-<p>现在我知道自己有很多问题要关心. 如何买房, 何时结婚, 都是要仔细考虑的问题. 在夜深人静, 躺在床上, 心想应该考虑一下这些问题了, 然而往往刚开个头, 就睡着了, 一夜无梦, 直到天明. 现在我睡觉前先拉窗帘, 不然清晨的阳光会过早的叫醒我, 难以睡一个好觉. 此时此刻, 纵然看见璀璨的群星, 我无动于衷. 对外星文明, 我想引用所罗门的话是合适的: “普天之下, 并无新事”. 掠食者与被掠食者的斗争, 将是永恒. 这也是地球上科幻小说永远的主题. 纵然真有异星, 彼地生命异常奇异, 那也是徒劳. 地球上的生物永远不可能真正理解一种全新的生命形式及其社会组织. 因为”理解”本身, 是建立在我们文明的基础之上. 你不能真正想象”无”, 你能想象的”无”都在”有”的空间. 此时的我, 如同在对一个少年说: 山的背后还是山. 说这话的人, 都是老人. </p>
+<p>实际上用来做符号计算的软件很多, 如Maxima, Cadabra, Maple, Reduce等等. Maxima是符号计算软件之父, 使用Lisp语言, Mathematica<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>从它身上借鉴了非常多的东西, Mathematica本身也是使用符号语言. Cadabra底层使用C++语言, 但是软件本身语法使用”Latex语言”, 这对科技工作者基本就是自然语言了. Cadabra本意是为弦论学家设计的符号计算软件, 功能极其强大. 更让人惊喜的是它的输出界面如同Latex排版的一样, 极其漂亮. 但Cadabra还不是很成熟. 至于Maple大家都知道是老牌符号计算软件了, 输出界面也很漂亮, 内置了非常多的物理数学包, 相当专业. 至于Ruduce, 那也是祖师级的符号推导软件. 当年我老师的师兄去霍金的研究组做博后, 回来说自己的一大收获就是学会了使用Ruduce, 可见Ruduce当年的风靡程度.</p>
 
-<h3 id="section-1">二 理想</h3>
+<h2 id="section-1">使用方法</h2>
 
-<p>少年人总是分不清理想和欲望, 它们总是交织在一起. 欲望就像饥饿感, 让人如同野兽. 你追逐自己的欲望, 就像猎豹追逐奔跑的鹿. 而理想则是逃生的感觉, 追求理想如同鹿在逃生. 只有在追逐自己的理想时, 你才感觉到自己活着, 奔跑着. 欲望满足不了, 不过是让你感觉更饿, 但不会要你的命. 理想没了, 人就死了. 没有理想的人, 没有灵魂, 不过是行尸走肉.</p>
+<p>在你安装Mathmatica的目录, 找到Addons文件夹, 将这个包存放在LegacyPackages底下. 这样在Mathmatia启动时, 包会被自动导入.</p>
 
-<p>从少年时期, 我就隐然意识到这种区别. 我的远行是追寻自己的理想. 我的理想是追寻宇宙的究极. 在我看来, 选择物理作为专业是理所当然. 高中毕业, 坐火车去大学时, 站台上有几个同学相送. 十年之后, 我依然记得, 当车开始缓缓开动, 我站在车窗前向同学告别, 一个同学朝我喊: 愿你以后得诺贝尔奖! 我笑了笑, 心想: 那不是我的理想, 那只是你的欲望. 多年以来, 我一直被人问到所学专业, 当我回答物理时, 总是看到他们脸上的迷惑. 在他们看来, 选择物理跟自杀有点类似. 在我的家乡, 人们总是用”有处用的”和”没处用的”来评价一种事物. 自然, 如你所料, 物理是”没处用的”. 当然, 由于你是学物理的, 所以你也是”没处用的”, 这才是关键.</p>
+<p>然后使用命令</p>
 
-<p>我学习物理十年, 追逐理想十年. 直到理想破灭的那一天为止. 人说: 学武之人有三境界, 见自己, 见天地, 见众生. 我在学物理中, 这三个境界都经历了. 我看到了自己的物理资质, 看到了宇宙的究极问题的微妙难思, 看到了物理界天凡百态. 当我意识到, 以我的资质在究极问题上不会有进展时, 理想已不复存在. 令我奇怪的是, 当时我并不悲伤, 而是如同获得了解放. 学物理的那段时间, 我停掉手机, 不用任何社交软件, 不和朋友联系, 一心投入物理. 但这却让我离自己的理想愈远. 很久之后, 我看到柳生的一段话才发现问题所在. 人问柳生: 我若学剑, 日练三时, 何日能至一流之境? 柳生曰: 十年. 复问: 若日练六时, 何如? 柳生曰: 二十年. 再问: 若日练不辍, 则何如? 柳生曰: 如此, 则至死难入一流之境也. </p>
+<pre><code>&lt;&lt;GR`
+</code></pre>
 
-<p>刚开始离开物理时, 我很高兴, 因为可以有更多的时间做其它的事情, 学习编程, 学习经济学, 符号逻辑等等. 那时我感觉, 物理限制了我的人生, 放弃物理, 反而得到了一个新的世界. 但我没高兴多久. 物理让我觉得, 只有搞清楚这个宇宙的终极结构对短暂的人生才是有意义的, 和这个目标相比, 经济, 金融, 政治学关心都只是一时, 研究的都是过于平庸的问题. Douglas在«The Hitchhiker’s Guide To The Galaxy»中调侃我们这类人说: 宇宙终极问题的答案是42. 从他的玩笑中可以看到这个世界有太多的人像我一样, 认为只有思考终极问题的人生才是值得经历的人生. 研究物理的经历让我感觉其它任何工作都只是为了满足生存的欲望, 从事这些工作如同Sisyphus推石头一样, 充满了徒劳的绝望.</p>
+<p>导入<strong>GR</strong>包. 注意这个包的名字就是它的文件名, 如果你还有其它的包和这个包名字冲突, 将会报错.</p>
 
-<p>对理想主义者而言, 人生要么得到一切, 要么什么也不要. </p>
+<h2 id="section-2">使用说明</h2>
 
-<h3 id="section-2">三 摇滚</h3>
+<p>以Vaidya黑洞在double null 坐标表示为例:</p>
 
-<p>在十四岁之前我不需要音乐. 那时心中总是充满狂喜, 脑中充满幻想, 很难听进去外界的声音. 随着年龄的增大, 我越来越依赖于音乐. 如今, 如果一天不听摇滚乐, 我就会抑郁. 摇滚是我的抗抑郁良药, 胜过茶和咖啡.</p>
+<script type="math/tex; mode=display"> \displaystyle ds^{2}=-2f(u,v)dudv+r^{2}(u,v)d\Omega^{2}</script>
 
-<p>当我真正开始听摇滚乐时, 我才意识到流行音乐的媚俗与软弱, 意识到爵士乐的奢迷与逃避, 唯有摇滚才是力量, 是愤怒, 才能使我面对苍白的人生与无奈的社会. 我厌烦任何形式的”选秀”, 通过”选秀”选出来的人, 不过是所有人都能看顺眼的狗. 一味讨好流行风尚, 歌颂所谓的”爱情”, 这些都让人作呕. 我不需要任何人的认同, 也不想让任何人看着顺眼. 如果你看我不顺眼, 那是你的事, 我怎么活那是我的事. 我喜欢看见炸雷一样的摇滚让那些斯文的人掩耳逃窜, 是的, 滚回你的忧伤中去吧! 在那些忧伤与怀旧的咏唱中颓废, 乃是傻逼们的青春主旋律. 流行歌手告诉那些傻逼, 你不快乐, 那么整个世界不快乐, 你失恋那么整个宇宙都忧伤. 对这些人我只能你傻逼, 但这个世界不傻逼. 滚你妈的流行音乐!</p>
+<p>比如计算其Einstein张量:</p>
 
-<p>当理想已死, 唯有摇滚让我的精神重生. “涅磐”之后, 乃是永生. 永生的是那虽千万人我独往矣的精神, 永生的是”鸾羽有时刹, 龙性谁能驯”的桀傲. 我怀念九十年代. 那时中国大陆流行的是”唐朝”“黑豹”, 那时的青年一片阳刚之气, 有理想敢追求. 如今流行的是李玉刚娘娘腔, 中国青年只有一种性别, 都跟林黛玉一个性别. 在今天的青年看来, 理想只是身外之物, 是不成熟的表现. 今天的青年们是房奴, 对女人摇尾巴, 他们的人生只有九十平.</p>
+<script type="math/tex; mode=display"> \scriptsize\displaystyle \text{Einstein}\left[\left\{\{0,-f[u,v],0,0\},\{-f[u,v],0,0,0\},\left\{0,0,r[u,v]^2,0\right\},\left\{0,0,0,r[u,v]^2\text{Sin}[\theta ]^2\right\}\right\},\{u,v,\theta ,\phi \}\right]</script>
 
-<h3 id="section-3">四 归来</h3>
+<p>计算结果举例如下:</p>
 
-<p>十年之前, 我高三. 毕业之时, 给同学录上留言, 我写道”十年之后当思我, 举国若狂欲语谁!”. 如今孤身归来, 偏安公门, 现实理想俱幻灭, 真是”十年之后我归来, 一事无成欲语谁?”</p>
+<script type="math/tex; mode=display"> \text{GR Private}~~ G_{uu}\frac{2 f^{(1,0)}[u,v] r^{(1,0)}[u,v]-2 f[u,v] r^{(2,0)}[u,v]}{f[u,v] r[u,v]}</script>
 
-<p>回来才发现, 家乡变得很陌生. 回乡后的生活如同生活在异乡一样, 依然陌生. </p>
+<script type="math/tex; mode=display"> \text{GR Private}~~G_{vu}\frac{f[u,v]+2 r^{(0,1)}[u,v] r^{(1,0)}[u,v]+2 r[u,v] r^{(1,1)}[u,v]}{r[u,v]^2}</script>
 
-<p>故乡没变, 是我变了. 故乡老了, 我却年轻, 而对一个少年人, 根本没有故乡. </p>
+<p>从这个例子你可以看出使用方法非常简单: GR包内建了七个函数:</p>
+
+<pre><code>Chri "计算度规的联络系数"
+Riemann "计算Riemann曲率张量"
+Ricci "计算Ricci张量"
+Ricalar "计算Ricci标量"
+Einstein "计算Einstein张量"
+Kretschmanscalar "计算Kretschman标量"
+Weyl "计算Weyl曲率张量"
+</code></pre>
+
+<p>每个函数的参数都是一样的:</p>
+
+<pre><code>函数[度规,坐标]
+</code></pre>
+
+<p>注意度规的格式是矩阵, 而坐标是数组. 这在上面的例子中已经清楚的给出来了. 当然最好在Mathmatica中打开这个包, 自己看看源文件, 这样可以一目了然.</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>您可能已经注意到了Mathematica的取名方式和iPhone, iPad类似, 这不奇怪. 要知道Wolfram和Jobs是好朋友, Mathematica这名字正是Jobs建议的! 很多人对Wolfram把Mathematica做成收费软件颇有微词, 毕竟Mathematica开始是作为大学的一个研究项目, 后来竟被Wolfram做成私人产品, 并且成了以自己名字命名的公司, 而且目前是世界最大的计算软件公司之一. 不过现在想来, Wolfram有自己的策略. 符号软件是个小众软件, 如果找不到盈利模式它的开发速度将会非常缓慢. 而且如果没有商业模式运作, 符号软件的用户界面也不一定友好. Wolfram把Mathematica做成商业, 早就了Mathematica成为最好用的符号软件. 而且, Wolfram对Mathematica的盗版是放任的, 要知道Mathematica5的序列号竟然也能激活Mathematica8, Wolfram相当于是让那些买不起正版Mathematica软件的人免费使用产品, 也算是业界良心吧! 当然如果你有科研经费, 建议你还是用正版. 相比之下Maxima曾经如日中天, 后来商业化不如Mathematica成功, 随后被开源, 但是Maxima依然不如Mathematica好用. 当然得益于开源, Maxima的Emacs界面那是无与伦比!<a href="#fnref:1" rel="reference">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 
     
     <hr>
@@ -210,11 +272,11 @@
     <div class="pagination">
     	  <ul>
       
-        <li class="prev"><a href="/IT/2013/03/15/GoogleReader" title="阅读器还是过滤器？">&larr; Previous</a></li>
+        <li class="prev"><a href="/Book/2013/07/03/booklist" title="六月书单">&larr; Previous</a></li>
       
         <li><a href="/archive.html">Archive</a></li>
       
-        <li class="next"><a href="/Book/2013/05/04/booklist" title="四月书单">Next &rarr;</a></li>
+        <li class="next disabled"><a>Next &rarr;</a>
       
       </ul>
     </div>
@@ -263,7 +325,7 @@ $(document).ready(function(){
       
        
         
-        <li>
+        <li class="active">
         
         <a href="/categories.html#physics-ref">physics <span>8</span></a>
         </li>
@@ -287,7 +349,7 @@ $(document).ready(function(){
         </li>
        
         
-        <li class="active">
+        <li>
         
         <a href="/categories.html#essay-ref">essay <span>1</span></a>
         </li>
@@ -298,6 +360,22 @@ $(document).ready(function(){
         <a href="/categories.html#Book-ref">Book <span>3</span></a>
         </li>
       
+      
+        <li class="nav-header">Tags</li>
+        
+        
+
+
+  
+     
+    	<li><a href="/tags.html#Time machine-ref">Time machine <span>3</span></a></li>
+     
+    	<li><a href="/tags.html#Superluminal-ref">Superluminal <span>2</span></a></li>
+    
+  
+
+
+
       
     </ul>
   </div>
