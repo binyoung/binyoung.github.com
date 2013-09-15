@@ -14,6 +14,8 @@ http://yangbin.tk//message.html
 http://yangbin.tk//sitemap.txt
 http://yangbin.tk//page2/index.html
 
+http://yangbin.tk//Book/2013/09/01/booklist
+http://yangbin.tk//Book/2013/08/02/bl
 http://yangbin.tk//physics/2013/07/07/GRMathematica
 http://yangbin.tk//Book/2013/07/03/booklist
 http://yangbin.tk//IT/2013/06/07/portableapps
@@ -25,7 +27,6 @@ http://yangbin.tk//physics/2013/01/15/test
 http://yangbin.tk//physics/2012/10/12/warp-deriver
 http://yangbin.tk//Coding/2012/04/12/Monte-method-Pi
 http://yangbin.tk//Coding/2012/03/25/Self-power-number
-http://yangbin.tk//lessons/2011/12/29/jekyll-introduction
 http://yangbin.tk//physics/2011/07/25/parallel-universes
 http://yangbin.tk//physics/2011/07/24/time-machine
 http://yangbin.tk//math/2011/07/04/grothendieck
