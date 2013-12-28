@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>八月书单</title>
+    <title>iPad越狱要做的两件事</title>
     
     <meta name="author" content="YangBin">
 
@@ -130,35 +130,33 @@
       <div id="main-content" class="content">
         
 <div class="page-header">
-    <h1>八月书单 <small><!--Supporting tagline--></small></h1>
+    <h1>iPad越狱要做的两件事 <small><!--Supporting tagline--></small></h1>
 </div>
 
 <div class="row">
   <div id="article_indent" class="span9 pull-left">
     <div class="span3 article_published">杨彬 发表于
-      <span class="date">01 September 2013</span>
+      <span class="date">30 November 2013</span>
       <div class="article_gplus"><div class="g-plusone" data-size="small" data-annotation="none"></div></div>
     </div>
     <div class="clear"></div>
     
-      <p>最近就没怎么读书. 单位上只允许看报, 所以书读的少了. 主要还是自己心里还是很浮躁. </p>
+      <p>最近在iPad2上安装了百度输入法. 这个Pad在ios5.1.1下进行了完美越狱, 一直很流畅, 从没出过问题. 我安装软件都是使用同步推, 很少用cydia安装软件. 这次安装百度输入法发现cydia很久没打开更新了. 几天后, 我发现cydia有更新, 于是直接更新, 结果ipad2出问题了, 不能启动, 一直显示连接iTunes, 我估计是更新cydia时出现文件冲突, 以致无法启动. 之前进行越狱时, 我备份过系统, 不过当时没备份shsh, 这样只能使用iTunes升级到ios7.04版本.</p>
 
-<h3 id="httpbookdoubancomsubject3143632-by-feynman"><a href="http://book.douban.com/subject/3143632/">费曼物理学讲义</a> by Feynman</h3>
+<p>iPad升级是这么工作的: iPhone/iPad等硬件重装系统后需要到苹果服务器上注册, 其实就是由服务器返回一个shsh给iPhone/iPad, 而新安装的系统依赖这个返回值完成激活. 但是对同一个设备, 不同版本ios的shsh不一样. 苹果公司为了让用户尽量使用新版本的ios, 而不是使用老版本的ios, 所以做了一个很聪明的方案, 那就是每次新版本ios发布后不久就会关闭旧版本的ios的shsh认证服务. 这样一来, 如果你要从iTunes里做好的备份恢复一个早期版本的ios, 而你又没备份早期版本相应的shsh, 那就不能恢复系统. 好消息是cydia可以自动备份对应版本的shsh, 但这个备份需要导出, 否则, 一旦ipad变成白苹果状态, 那就没办法得到shsh信息. 导致恢复系统失败.</p>
 
-<p><img src="http://farm4.staticflickr.com/3828/9758462771_0a44d3bfba_o.jpg" width="150" height="160" hspace="15" vspace="5" align="left" /></p>
-
-<p>最近把这本书放在身边茶几上, 一伸手就可拿过来读一段, 聊以解闷. 刚好看到一段讲弹性力学, 看得我浑身舒畅无比! 去年我给学生讲过弹性力学的基础知识, 当时感觉讲的还行, 现在来看费曼的讲法, 感觉我只适合种地, 完全不适合搞物理. 当然弹性力学的东西就那么点, 关键在费曼在讲这个过程中展现的如何做物理的技巧, 太令人叹服了! 先是从胡克定律入手, 然后以完全物理的方式得到了定律的基本形式, 再引入泊松比, 然后通过物理考虑给出泊松比的一个范围限制. 这时弹性力学的方程已经全部给出了, 然后开始计算具体的例子. 这整个过程完全是物理的考虑, 这就是思考物理的方式, 物理就应该这么讲! </p>
+<p>所以在进行ipad越狱时要做两件事: 1. 做系统备份; 2. 完美越狱后导出越狱版本的shsh文件. 这样, 万一由于cydia出现问题导致ipad无法重启, 也可以使用备份恢复系统, 而不用去升级到最新系统.</p>
 
     
     <hr>
     <div class="pagination">
       <ul>
       
-        <li class="prev"><a href="/Book/2013/08/02/bl" title="七月书单">&larr; Previous</a></li>
+        <li class="prev"><a href="/essay/2013/11/11/classical%26quantum" title="经典世界和量子世界">&larr; Previous</a></li>
       
         <li><a href="/archive.html">Archive</a></li>
       
-        <li class="next"><a href="/IT/2013/11/09/PearOS" title="你有苹果, 我有梨">Next &rarr;</a></li>
+        <li class="next"><a href="/essay/2013/12/28/summer" title="2013年终总结">Next &rarr;</a></li>
       
       </ul>
     </div>
@@ -224,7 +222,7 @@ $(document).ready(function(){
         </li>
        
         
-        <li>
+        <li class="active">
         
         <a href="/categories.html#IT-ref">IT <span>4</span></a>
         </li>
@@ -236,7 +234,7 @@ $(document).ready(function(){
         </li>
        
         
-        <li class="active">
+        <li>
         
         <a href="/categories.html#Book-ref">Book <span>5</span></a>
         </li>

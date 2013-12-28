@@ -14,6 +14,8 @@ http://yangbin.tk//message.html
 http://yangbin.tk//sitemap.txt
 http://yangbin.tk//page2/index.html
 
+http://yangbin.tk//essay/2013/12/28/summer
+http://yangbin.tk//IT/2013/11/30/ipadupdate
 http://yangbin.tk//essay/2013/11/11/classical%26quantum
 http://yangbin.tk//IT/2013/11/09/PearOS
 http://yangbin.tk//Book/2013/09/01/booklist
